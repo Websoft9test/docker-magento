@@ -1,6 +1,7 @@
-## About
+## Magento
 
-This repository is forked from ONLYOFFICE/Docker-CommunityServer, we have the following modifications are provided
+官方提供的 Cloud Docker 项目镜像中，并没有包含 Magento 源码，需在启动容器的时候基于 composer 运行。
 
-* replace README.md
-* add README-zh.md, CHANGELOG.md, Note.md, License.md, docker-compose.yml,.env, src, .github folder
+有一定的复杂性，此项目暂不实现
+
+参考：https://devdocs.magento.com/cloud/docker/docker-development.html
