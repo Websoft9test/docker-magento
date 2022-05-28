@@ -1,4 +1,4 @@
-# Magento on Docker
+# Adobe Commerce (Magento) on Docker
 
 ![](https://libs.websoft9.com/common/websott9-cloud-installer.png) 
 
@@ -58,7 +58,7 @@ sudo systemctl start docker
 alias docker-compose='docker compose'
 ```
 
-#### Install Magento
+#### Install Adobe Commerce (Magento)
 
 We assume that you are already familiar with Docker, and you can modify [docker-compose file](docker-compose.yml) by yourself
 
@@ -82,27 +82,13 @@ You can point your browser to: *`http://Instance's Internet IP:port`*
 
 The following is the information that may be needed during use
 
-#### Credentials
-
-By default, the available users are:
-
-| Username    | Password |
-| ------- | -------- |
-|  admin | 123456  |
-
-#### Services and Ports
-
-| Service | Port | Use |  Necessity |
-| --- | --- | --- | --- |
-| magento-server | 9002 | Web-GUI database management tool | Y |
-| phpmyadmin | 9090 | Web-GUI database management tool | Y |
 ## Documentation
 
-[Magento Administrator Guide](https://support.websoft9.com/docs/magento)
+[Adobe Commerce (Magento) Administrator Guide](https://support.websoft9.com/docs/magento)
 
 ## Enterprise Support
 
-If you want to get our Enterprise Support to ensure high availability of applications, you can subscribe our [Magento Enterprise Support](https://apps.websoft9.com/magento) 
+If you want to get our Enterprise Support to ensure high availability of applications, you can subscribe our [Adobe Commerce (Magento) Enterprise Support](https://apps.websoft9.com/magento) 
 
 What you get with a Enterprise Support subscription?
 

@@ -1,4 +1,4 @@
-# Magento on Docker
+# Adobe Commerce (Magento) on Docker
 
 ![](https://libs.websoft9.com/common/websoft9-cloud-installer.png) 
 
@@ -6,7 +6,7 @@
 
 [简体中文](/README-zh.md) | [English](/README.md) 
 
-本项目是由 [Websoft9](https://www.websoft9.com) 研发的 **云原生程序** ，大大简化 Magento 复杂的安装及配置。
+本项目是由 [Websoft9](https://www.websoft9.com) 研发的 **云原生程序** ，大大简化 Adobe Commerce (Magento) 复杂的安装及配置。
 
 ## 系统要求
 
@@ -62,7 +62,7 @@ sudo systemctl start docker
 alias docker-compose='docker compose'
 ```
 
-#### 安装 Magento
+#### 安装 Adobe Commerce (Magento)
 
 直接运行下面的命令快速安装应用。如果你熟悉 Docker，建议先修改 [docker-compose](docker-compose.yml) 文件以满足自己的需求
 
@@ -74,7 +74,7 @@ sudo docker-compose up -d
 
 ### 常见问题
 
-#### 安装 Magento 前需要更改密码吗？
+#### 安装 Adobe Commerce (Magento) 前需要更改密码吗？
 
 是的, 在生产环境中，您应该在 docker-compose 文件中修改所有数据库密码和应用程序密码
 
@@ -88,27 +88,13 @@ sudo docker-compose up -d
 
 下面是使用过程中可能需要的信息
 
-#### 账号
-
-本应用默认安装后的管理员用户名和密码如下：
-
-| 用户名    | 密码 |
-| ------- | -------- |
-|  admin | 123456  |
-
-#### 服务和端口
-
-| 名称 | 端口号 | 用途 |  必要性 |
-| --- | --- | --- | --- |
-| magento-server | 9002 | 浏览器访问 Magento | Y |
-| phpmyadmin | 9090 | 数据库可视化管理工具 | Y |
 ## 文档
 
-[Magento 管理员手册](https://support.websoft9.com/docs/magento)
+[Adobe Commerce (Magento) 管理员手册](https://support.websoft9.com/docs/magento)
 
 ## 企业级支持
 
-如果需要企业级支持，请订阅我们提供的 [Magento 企业级支持版](https://apps.websoft9.com/magento) 
+如果需要企业级支持，请订阅我们提供的 [Adobe Commerce (Magento) 企业级支持版](https://apps.websoft9.com/magento) 
 
 订阅企业级产品后，您可获得：
 
