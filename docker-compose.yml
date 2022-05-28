@@ -1,44 +1,60 @@
+# image: https://hub.docker.com/r/bitnami/magento
+
 version: '3.8'
 
 services:
   magento:
-    image: magento:${APP_VERSION}
-    container_name: ${APP_CONTAINER_NAME}
+    image: docker.io/bitnami/magento:$APP_VERSION
+    container_name: $APP_NAME
     ports:
-      - ${APP_PORT}:80
-    volumes:
-      - magento:/var/www/html
+      - '$APP_PORT:8080'
     environment:
-      # The belows vars is need, otherwise container error
-      magento_DB_HOST: ${DB_MYSQL_HOST}
-      magento_DB_PASSWORD: ${DB_MYSQL_PASSWORD}
-    links: 
-      - mysql
-    restart: always
-    stdin_open: true
-    tty: true
+      - MAGENTO_USERNAME=$APP_USER
+      - MAGENTO_PASSWORD=$APP_PASSWORD
+      - MAGENTO_HOST=$APP_URL:$APP_PORT
+      - MAGENTO_EMAIL
+      - MAGENTO_MODE
+      - MAGENTO_ADMIN_URL_PREFIX
+      - MAGENTO_DEPLOY_STATIC_CONTENT
+      - PHP_MEMORY_LIMIT
+      - MAGENTO_DATABASE_HOST=mariadb
+      - MAGENTO_DATABASE_PORT_NUMBER=3306
+      - MAGENTO_DATABASE_USER=$DB_MARIADB_USER
+      - MAGENTO_DATABASE_NAME=$DB_MARIADB_NAME
+      - MAGENTO_DATABASE_PASSWORD=$DB_MARIADB_PASSWORD
+      - ELASTICSEARCH_HOST=elasticsearch
+      - ELASTICSEARCH_PORT_NUMBER=9200
+    volumes:
+      - 'magento_data:/bitnami/magento'
+    depends_on:
+      - mariadb
+      - elasticsearch
 
-  mysql:
-    image: mysql:${DB_MYSQL_VERSION}
-    container_name: magento-mysql
-    restart: always
-    stdin_open: true
-    tty: true
-    ports:
-     - ${DB_MYSQL_PORT}:3306
-    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-    volumes:
-      - ${VOLUMES_PATH_PREFIX}/mysql/mysql_config/conf.d:/etc/mysql/conf.d
-      - ${VOLUMES_PATH_PREFIX}/mysql/mysql_data:/var/lib/mysql
+  mariadb:
+    image: docker.io/bitnami/mariadb:$DB_MARIADB_VERSION
+    container_name: $APP_NAME-db
     environment:
-      MYSQL_DATABASE: ${DB_MYSQL_NAME}
-      MYSQL_USER: ${DB_MYSQL_USER}
-      MYSQL_PASSWORD: ${DB_MYSQL_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${DB_MYSQL_PASSWORD}
+      - MARIADB_USER=$DB_MARIADB_USER
+      - MARIADB_DATABASE=$DB_MARIADB_NAME
+      - MARIADB_PASSWORD=$DB_MARIADB_PASSWORD
+      - MARIADB_ROOT_PASSWORD=$DB_MARIADB_PASSWORD
+    volumes:
+      - 'mariadb_data:/bitnami/mariadb'
+
+  elasticsearch:
+    image: docker.io/bitnami/elasticsearch:7
+    container_name: $APP_NAME-elasticsearch
+    volumes:
+      - 'elasticsearch_data:/bitnami/elasticsearch/data'
+
+volumes:
+  mariadb_data:
+    driver: local
+  magento_data:
+    driver: local
+  elasticsearch_data:
+    driver: local
 
 networks:
   default:
-      name: ${APP_NETWORK}
-
-volumes:
-  magento:
+      name: $APP_NAME
